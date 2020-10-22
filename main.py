@@ -5,16 +5,17 @@ import time
 class Gui:
     def __init__(self):
         self.root = tk.Tk()
-        self.label = tk.Label(text="")
-        self.label.grid(column=0, row=0)
-        self.label.pack()
+        self.statusLabel = tk.Label(text="State: Connected")
+        self.statusLabel.grid(row=0, column=0)
+        self.timeLabel = tk.Label(text="")
+        self.timeLabel.grid(row=0, column=1, padx=1000)
         self.update_clock()
         self.root.mainloop()
 
     def update_clock(self):
         now = time.strftime("%H:%M:%S")
-        self.label.configure(text=now)
-        self.root.after(1000, self.update_clock)
+        self.timeLabel.configure(text="Time: " + now)
+        self.timeLabel.after(1000, self.update_clock)
 
 
 app = Gui()
